@@ -1,6 +1,6 @@
 variable "database-login" {
-  type = "String"
+  type = "string"
 }
 variable "database-password" {
-  type = "String"
+  type = "string"
 }
