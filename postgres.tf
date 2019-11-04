@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "postgres-sql" {
-  name     = "postgresql-database"
+  name     = "postgresql-database-deutsche-bank"
   location = "UK South"
 }
 
