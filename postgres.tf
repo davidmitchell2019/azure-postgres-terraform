@@ -7,7 +7,7 @@ resource "azurerm_postgresql_server" "postgres-server" {
   name                         = "mysqlserver"
   resource_group_name          = "${azurerm_resource_group.postgres-sql.name}"
   location                     = "UK South"
-  version                      = "12.0"
+  version                      = "10.0"
   administrator_login          = "${var.database-login}"
   administrator_login_password = "${var.database-password}"
   ssl_enforcement              = "Enabled"
