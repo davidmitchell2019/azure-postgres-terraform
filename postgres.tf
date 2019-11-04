@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "postgres-sql" {
-  name     = "acceptanceTestResourceGroup1"
+  name     = "postgresql-database"
   location = "UK South"
 }
 
@@ -17,8 +17,4 @@ resource "azurerm_sql_database" "postgres-db" {
   resource_group_name = "${azurerm_resource_group.postgres-sql.name}"
   location            = "UK South"
   server_name         = "${azurerm_sql_server.postgres-server.name}"
-
-  tags = {
-    environment = "dev"
-  }
 }
