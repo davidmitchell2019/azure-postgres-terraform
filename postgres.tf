@@ -8,8 +8,8 @@ resource "azurerm_sql_server" "postgres-server" {
   resource_group_name          = "${azurerm_resource_group.postgres-sql.name}"
   location                     = "UK South"
   version                      = "12.0"
-  administrator_login          = "var.database-login"
-  administrator_login_password = "var.database-password"
+  administrator_login          = "${var.database-login}"
+  administrator_login_password = "${var.database-password}"
 }
 
 resource "azurerm_sql_database" "postgres-db" {
