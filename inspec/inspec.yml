@@ -12,4 +12,3 @@ depends:
   git: https://github.com/inspec/inspec-azure.git
 supports:
 - platform: azure
-- platform: os
