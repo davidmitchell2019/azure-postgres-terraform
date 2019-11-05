@@ -12,7 +12,7 @@ depends:
   url: https://github.com/inspec/inspec-azure/archive/master.tar.gz
 - name: inspec-azure
   git: https://github.com/inspec/inspec-azure.git
-  - name: controls
-    path: ../controls
+- name: controls
+  path: controls
 supports:
 - platform: azure
