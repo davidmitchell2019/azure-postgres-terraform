@@ -2,7 +2,7 @@
 
 This example shows the implementation of an InSpec profile for Azure. See [https://github.com/inspec/inspec-azure](https://github.com/inspec/inspec-azure) for details on how to configure credentials for your subscription.
 
-##  Create a profile
+##  Create a profile 
 
 ```
 $ inspec init profile --platform azure my-profile
@@ -16,7 +16,7 @@ Creating new profile at /Users/spaterson/my-profile
  • Creating file controls/example.rb
  • Creating file inspec.yml
  • Creating file libraries/.gitkeep
-
+ 
 ```
 
 ## Run the tests
