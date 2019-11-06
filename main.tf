@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 data "terraform_remote_state" "state" {
   backend = "azurerm"
-  config {
+  config = {
     storage_account_name  = "${var.storage_account_name}"
     container_name        = "${var.storage_container_name}"
     key                   = "terraform.tfstate"
