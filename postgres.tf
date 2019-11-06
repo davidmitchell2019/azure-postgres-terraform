@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "postgres-sql" {
 }
 
 resource "azurerm_postgresql_server" "postgres-server" {
-  name                         = "postgresql-database-deutsche-bank"
+  name                         = "${var.resource_group_name}"
   resource_group_name          = "${azurerm_resource_group.postgres-sql.name}"
   location                     = "UK South"
   version                      = "10.0"
@@ -26,7 +26,7 @@ resource "azurerm_postgresql_server" "postgres-server" {
 
 resource "azurerm_postgresql_database" "postgres-db" {
   name                = "mysqldatabase"
-  resource_group_name = "${azurerm_resource_group.postgres-sql.name}"
+  resource_group_name = "${var.resource_group_name}"
   server_name         = "${azurerm_postgresql_server.postgres-server.name}"
   charset             = "UTF8"
   collation           = "English_United States.1252"
