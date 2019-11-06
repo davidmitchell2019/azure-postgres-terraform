@@ -2,7 +2,11 @@ provider "azurerm" {
   version = "=1.36.0"
 }
 terraform {
-  backend "azurerm" {
+  backend "azurerm" {}
+}
+data "terraform_remote_state" "state" {
+  backend = "azurerm"
+  config {
     storage_account_name  = "${var.storage_account_name}"
     container_name        = "${var.storage_container_name}"
     key                   = "terraform.tfstate"
