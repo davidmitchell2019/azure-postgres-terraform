@@ -4,6 +4,7 @@ provider "azurerm" {
 terraform {
   backend "azurerm" {
     key                   = "terraform.tfstate"
+    resource_group_name  = "${var.resource_group_name}"
   }
 }
 data "terraform_remote_state" "state" {
