@@ -1,9 +1,6 @@
 provider "azurerm" {
   version = "=1.36.0"
 }
-terraform {
-  backend "azurerm" {}
-}
 data "terraform_remote_state" "state" {
   backend = "azurerm"
   config {
