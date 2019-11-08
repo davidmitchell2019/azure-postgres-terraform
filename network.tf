@@ -19,3 +19,10 @@ resource "azurerm_postgresql_virtual_network_rule" "test" {
   subnet_id                            = "${azurerm_subnet.subnet.id}"
   ignore_missing_vnet_service_endpoint = true
 }
+resource "azurerm_postgresql_firewall_rule" "test" {
+  name                = "my-home"
+  resource_group_name = "${var.resource_group_name}"
+  server_name         = "${azurerm_postgresql_server.postgre-server.name}"
+  start_ip_address    = "79.66.41.57"
+  end_ip_address      = "79.66.41.57"
+}
