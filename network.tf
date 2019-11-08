@@ -17,5 +17,5 @@ resource "azurerm_postgresql_virtual_network_rule" "test" {
   resource_group_name                  = "${var.resource_group_name}"
   server_name                          = "postgresql-database-deutsche-bank"
   subnet_id                            = "${azurerm_subnet.subnet.id}"
-  ignore_missing_vnet_service_endpoint = false
+  ignore_missing_vnet_service_endpoint = true
 }
