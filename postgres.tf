@@ -14,7 +14,7 @@ resource "azurerm_postgresql_server" "postgres-server" {
   sku {
    name     = "B_Gen5_2"
    capacity = 2
-   tier     = "General Purpose"
+   tier     = "GeneralPurpose"
    family   = "Gen5"
   }
   storage_profile {
