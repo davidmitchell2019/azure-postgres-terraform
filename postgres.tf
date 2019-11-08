@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "postgres-sql" {
 }
 
 resource "azurerm_postgresql_server" "postgres-server" {
-  name                         = "${var.resource_group_name}"
+  name                         = "postgresql-database-deutsche-bank"
   resource_group_name          = "${azurerm_resource_group.postgres-sql.name}"
   location                     = "UK South"
   version                      = "10.0"
