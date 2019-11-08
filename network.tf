@@ -14,7 +14,7 @@ resource "azurerm_subnet" "subnet" {
 resource "azurerm_postgresql_virtual_network_rule" "test" {
   name                                 = "postgresql-vnet-rule"
   resource_group_name                  = "${var.resource_group_name}"
-  server_name                          = "postgresql-database-deutsche-bank"
+  server_name                          = "${azurerm_postgresql_server.postgre-server.name}"
   subnet_id                            = "${azurerm_subnet.subnet.id}"
   ignore_missing_vnet_service_endpoint = true
   depends_on = [azurerm_virtual_network.vnet]
@@ -25,6 +25,7 @@ resource "azurerm_postgresql_firewall_rule" "test" {
   server_name         = "${azurerm_postgresql_server.postgres-server.name}"
   start_ip_address    = "79.66.41.57"
   end_ip_address      = "79.66.41.57"
+  depends_on = [azurerm_postgresql_server.postgres-server]
 }
 resource "azurerm_network_security_group" "test" {
   name                = "example-nsg"
