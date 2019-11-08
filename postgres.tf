@@ -12,7 +12,7 @@ resource "azurerm_postgresql_server" "postgres-server" {
   administrator_login_password = "${var.database-password}"
   ssl_enforcement              = "Enabled"
   sku {
-   name     = "B_Gen5_2"
+   name     = "G_Gen5_2"
    capacity = 2
    tier     = "GeneralPurpose"
    family   = "Gen5"
