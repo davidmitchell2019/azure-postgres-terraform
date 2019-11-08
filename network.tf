@@ -4,7 +4,6 @@ resource "azurerm_virtual_network" "vnet" {
   location            = "UKSouth"
   resource_group_name = "${var.resource_group_name}"
 }
-
 resource "azurerm_subnet" "subnet" {
   name                 = "subnet"
   resource_group_name  = "${var.resource_group_name}"
@@ -25,4 +24,35 @@ resource "azurerm_postgresql_firewall_rule" "test" {
   server_name         = "${azurerm_postgresql_server.postgres-server.name}"
   start_ip_address    = "79.66.41.57"
   end_ip_address      = "79.66.41.57"
+}
+resource "azurerm_network_security_group" "vnet-security" {
+  name                = "vnet-security-group"
+  location            = "UKSouth"
+  resource_group_name = "${var.resource_group_name}"
+}
+resource "azurerm_network_security_rule" "egress-rule" {
+  name                        = "allow-egress"
+  priority                    = 100
+  direction                   = "Outbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "*"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = "${var.resource_group_name}"
+  network_security_group_name = "${azurerm_network_security_group.vnet-security.name}"
+}
+resource "azurerm_network_security_rule" "ingress-rule" {
+  name                        = "allow-ingress"
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "*"
+  source_address_prefix       = "79.66.41.57/32"
+  destination_address_prefix  = "*"
+  resource_group_name         = "${var.resource_group_name}"
+  network_security_group_name = "${azurerm_network_security_group.vnet-security.name}"
 }
