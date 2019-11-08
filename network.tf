@@ -17,7 +17,7 @@ resource "azurerm_postgresql_virtual_network_rule" "test" {
   server_name                          = "postgresql-database-deutsche-bank"
   subnet_id                            = "${azurerm_subnet.subnet.id}"
   ignore_missing_vnet_service_endpoint = true
-  depends_on = [azurerm_virtual_network.vnet.id]
+  depends_on = [azurerm_virtual_network.vnet]
 }
 resource "azurerm_postgresql_firewall_rule" "test" {
   name                = "my-home"
