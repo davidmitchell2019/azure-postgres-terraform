@@ -25,11 +25,6 @@ resource "azurerm_postgresql_firewall_rule" "test" {
   start_ip_address    = "79.66.41.57"
   end_ip_address      = "79.66.41.57"
 }
-resource "azurerm_network_security_group" "vnet-security" {
-  name                = "vnet-security-group"
-  location            = "UKSouth"
-  resource_group_name = "${var.resource_group_name}"
-}
 resource "azurerm_network_security_group" "test" {
   name                = "example-nsg"
   location            = "UKSouth"
