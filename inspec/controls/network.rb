@@ -1,7 +1,7 @@
 control "vnet" do
   describe azurerm_virtual_network(resource_group: "postgresql-database-deutsche-bank", name: 'example-vnet') do
       it               { should exist }
-      its('location')  { should eq 'UKSouth' }
+      its('location')  { should eq 'uksouth' }
       its('address_space') { should eq ["10.10.10.0/24"] }
     end
 end
@@ -10,7 +10,6 @@ control "subnet" do
       it { should exist }
       its('type') { should eq 'Microsoft.Network/virtualNetworks/subnets' }
       its('address_prefix') { should eq "10.10.10.0/24" }
-      its('nsg') { should eq 'example-nsg' }
     end
 end
 control "security-group" do
