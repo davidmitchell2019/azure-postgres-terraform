@@ -1,11 +1,6 @@
-resource "azurerm_resource_group" "postgres-sql" {
-  name     = "postgresql-database-deutsche-bank"
-  location = "UK South"
-}
-
 resource "azurerm_postgresql_server" "postgres-server" {
   name                         = "postgresql-database-deutsche-bank"
-  resource_group_name          = "${azurerm_resource_group.postgres-sql.name}"
+  resource_group_name          = "${var.resource_group_name}"
   location                     = "UK South"
   version                      = "10.0"
   administrator_login          = "${var.database-login}"
