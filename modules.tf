@@ -8,4 +8,5 @@ module "postgres" {
   subnet_ip_cidr = "${var.subnet_ip_cidr}"
   vnet_ip_cidr = "${var.vnet_ip_cidr}"
   storagemb = "${var.storagemb}"
+  backup_retention_days = "${var.backup_retention_days}"
 }

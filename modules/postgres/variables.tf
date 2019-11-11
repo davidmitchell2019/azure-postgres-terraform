@@ -22,3 +22,6 @@ variable "office_ip" {
 variable "storagemb" {
   type = "string"
 }
+variable "backup_retention_days" {
+  type = "string"
+}
