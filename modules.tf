@@ -1,12 +1,12 @@
 module "postgres" {
-  source  = "modules/postgres"
+  source  = "./modules/postgres"
   database-login = "${var.database-login}"
   database-password = "${var.database-password}"
   postgres-server-name = "${var.postgres-server-name}"
   resource_group_name = "${var.resource_group_name}"
 }
 module "network" {
-  source = "modules/network"
+  source = "./modules/network"
   postgres-server-name = "${var.postgres-server-name}"
   resource_group_name = "${var.resource_group_name}"
   vnet_ip_cidr = "${var.vnet_ip_cidr}"
