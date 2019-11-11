@@ -4,6 +4,7 @@ module "postgres" {
   database-password = "${var.database-password}"
   postgres-server-name = "${var.postgres-server-name}"
   resource_group_name = "${var.resource_group_name}"
+  office_ip = "${var.office_ip}"
 }
 module "network" {
   source = "./modules/network"

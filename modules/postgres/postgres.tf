@@ -18,11 +18,18 @@ resource "azurerm_postgresql_server" "postgres-server" {
     geo_redundant_backup  = "Disabled"
   }
 }
-
 resource "azurerm_postgresql_database" "postgres-db" {
   name                = "mysqldatabase"
   resource_group_name = "${var.resource_group_name}"
   server_name         = "${var.postgres-server-name}"
   charset             = "UTF8"
   collation           = "English_United States.1252"
+}
+resource "azurerm_postgresql_firewall_rule" "fw" {
+  name                = "my-home"
+  resource_group_name = "${var.resource_group_name}"
+  server_name         = "${var.postgres-server-name}"
+  start_ip_address    = "${var.office_ip}"
+  end_ip_address      = "${var.office_ip}"
+  depends_on = [azurerm_postgresql_database.postgres-db]
 }

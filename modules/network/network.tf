@@ -19,13 +19,6 @@ resource "azurerm_postgresql_virtual_network_rule" "test" {
   ignore_missing_vnet_service_endpoint = true
   depends_on = [azurerm_virtual_network.vnet]
 }
-resource "azurerm_postgresql_firewall_rule" "fw" {
-  name                = "my-home"
-  resource_group_name = "${var.resource_group_name}"
-  server_name         = "${var.postgres-server-name}"
-  start_ip_address    = "${var.office_ip}"
-  end_ip_address      = "${var.office_ip}"
-}
 resource "azurerm_network_security_group" "sg" {
   name                = "nsg"
   location            = "UKSouth"

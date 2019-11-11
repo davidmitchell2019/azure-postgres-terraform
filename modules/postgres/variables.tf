@@ -10,3 +10,6 @@ variable "resource_group_name" {
 variable "postgres-server-name"{
   type = "string"
 }
+variable "office_ip" {
+  type = "string"
+}
