@@ -31,3 +31,6 @@ variable "storagemb" {
 variable "backup_retention_days" {
   type = "string"
 }
+variable "geo_redundent_enabled" {
+  type = "string"
+}

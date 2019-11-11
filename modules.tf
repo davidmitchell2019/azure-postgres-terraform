@@ -9,4 +9,5 @@ module "postgres" {
   vnet_ip_cidr = "${var.vnet_ip_cidr}"
   storagemb = "${var.storagemb}"
   backup_retention_days = "${var.backup_retention_days}"
+  geo_redundent_enabled = "${var.geo_redundent_enabled}"
 }
