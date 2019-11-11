@@ -22,7 +22,7 @@ resource "azurerm_postgresql_server" "postgres-server" {
 resource "azurerm_postgresql_database" "postgres-db" {
   name                = "mysqldatabase"
   resource_group_name = "${var.resource_group_name}"
-  server_name         = "${azurerm_postgresql_server.postgres-server.name}"
+  server_name         = "${var.postgres-server-name}"
   charset             = "UTF8"
   collation           = "English_United States.1252"
 }

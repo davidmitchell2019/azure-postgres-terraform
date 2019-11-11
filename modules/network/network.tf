@@ -14,20 +14,19 @@ resource "azurerm_subnet" "subnet" {
 resource "azurerm_postgresql_virtual_network_rule" "test" {
   name                                 = "postgresql-vnet-rule"
   resource_group_name                  = "${var.resource_group_name}"
-  server_name                          = "${azurerm_postgresql_server.postgres-server.name}"
+  server_name                          = "${var.postgres-server-name}"
   subnet_id                            = "${azurerm_subnet.subnet.id}"
   ignore_missing_vnet_service_endpoint = true
   depends_on = [azurerm_virtual_network.vnet]
 }
-resource "azurerm_postgresql_firewall_rule" "test" {
+resource "azurerm_postgresql_firewall_rule" "fw" {
   name                = "my-home"
   resource_group_name = "${var.resource_group_name}"
-  server_name         = "${azurerm_postgresql_server.postgres-server.name}"
+  server_name         = "${var.postgres-server-name}"
   start_ip_address    = "79.66.41.57"
   end_ip_address      = "79.66.41.57"
-  depends_on = [azurerm_postgresql_server.postgres-server]
 }
-resource "azurerm_network_security_group" "test" {
+resource "azurerm_network_security_group" "sg" {
   name                = "example-nsg"
   location            = "UKSouth"
   resource_group_name = "${var.resource_group_name}"
@@ -57,6 +56,6 @@ resource "azurerm_network_security_group" "test" {
 }
 resource "azurerm_subnet_network_security_group_association" "apply-sg-to-vnet" {
   subnet_id                 = "${azurerm_subnet.subnet.id}"
-  network_security_group_id = "${azurerm_network_security_group.test.id}"
-  depends_on = [azurerm_network_security_group.test]
+  network_security_group_id = "${azurerm_network_security_group.sg.id}"
+  depends_on = [azurerm_network_security_group.sg]
 }
