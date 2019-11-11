@@ -1,6 +1,6 @@
 resource "azurerm_virtual_network" "vnet" {
-  name                = "example-vnet"
-  address_space       = ["10.10.10.0/24"]
+  name                = "vnet"
+  address_space       = ["${var.vnet_ip_cidr}"]
   location            = "UKSouth"
   resource_group_name = "${var.resource_group_name}"
 }
@@ -8,7 +8,7 @@ resource "azurerm_subnet" "subnet" {
   name                 = "subnet"
   resource_group_name  = "${var.resource_group_name}"
   virtual_network_name = "${azurerm_virtual_network.vnet.name}"
-  address_prefix       = "10.10.10.0/24"
+  address_prefix       = "${var.subnet_ip_cidr}"
   service_endpoints    = ["Microsoft.Sql"]
 }
 resource "azurerm_postgresql_virtual_network_rule" "test" {
@@ -23,11 +23,11 @@ resource "azurerm_postgresql_firewall_rule" "fw" {
   name                = "my-home"
   resource_group_name = "${var.resource_group_name}"
   server_name         = "${var.postgres-server-name}"
-  start_ip_address    = "79.66.41.57"
-  end_ip_address      = "79.66.41.57"
+  start_ip_address    = "${var.office_ip}"
+  end_ip_address      = "${var.office_ip}"
 }
 resource "azurerm_network_security_group" "sg" {
-  name                = "example-nsg"
+  name                = "nsg"
   location            = "UKSouth"
   resource_group_name = "${var.resource_group_name}"
 
@@ -39,7 +39,7 @@ resource "azurerm_network_security_group" "sg" {
     protocol                    = "Tcp"
     source_port_range           = "*"
     destination_port_range      = "*"
-    source_address_prefix       = "79.66.41.57/32"
+    source_address_prefix       = "${var.office_ip}"
     destination_address_prefix  = "*"
   }
   security_rule {
