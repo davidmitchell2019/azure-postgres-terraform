@@ -19,3 +19,6 @@ variable "subnet_ip_cidr" {
 variable "office_ip" {
   type = "string"
 }
+variable "storagemb" {
+  type = "string"
+}

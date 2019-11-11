@@ -7,4 +7,5 @@ module "postgres" {
   office_ip = "${var.office_ip}"
   subnet_ip_cidr = "${var.subnet_ip_cidr}"
   vnet_ip_cidr = "${var.vnet_ip_cidr}"
+  storagemb = "${var.storagemb}"
 }

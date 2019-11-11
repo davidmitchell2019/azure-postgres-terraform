@@ -13,7 +13,7 @@ resource "azurerm_postgresql_server" "postgres-server" {
    family   = "Gen5"
   }
   storage_profile {
-    storage_mb            = 5120
+    storage_mb            = "${var.storagemb}"
     backup_retention_days = 7
     geo_redundant_backup  = "Disabled"
   }
