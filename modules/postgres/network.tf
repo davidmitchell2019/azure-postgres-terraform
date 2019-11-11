@@ -14,10 +14,10 @@ resource "azurerm_subnet" "subnet" {
 resource "azurerm_postgresql_virtual_network_rule" "test" {
   name                                 = "postgresql-vnet-rule"
   resource_group_name                  = "${var.resource_group_name}"
-  server_name                          = "${var.postgres-server-name}"
+  server_name                          = "${azurerm_postgresql_server.postgres-server.name}"
   subnet_id                            = "${azurerm_subnet.subnet.id}"
   ignore_missing_vnet_service_endpoint = true
-  depends_on = [azurerm_postgresql_database.postgres-db, azurerm_virtual_network.vnet]
+  depends_on = [azurerm_postgresql_database.postgres-db]
 }
 resource "azurerm_network_security_group" "sg" {
   name                = "nsg"
