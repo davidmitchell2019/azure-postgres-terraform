@@ -4,8 +4,7 @@ variable "database-login"{
 variable "database-password"{
   type = "string"
 }
-variable "resource_group_name"
-{
+variable "resource_group_name" {
   type = "string"
 }
 variable "postgres-server-name"{
