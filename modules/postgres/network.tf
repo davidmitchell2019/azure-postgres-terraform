@@ -50,5 +50,5 @@ resource "azurerm_network_security_group" "sg" {
 resource "azurerm_subnet_network_security_group_association" "apply-sg-to-vnet" {
   subnet_id                 = "${azurerm_subnet.subnet.id}"
   network_security_group_id = "${azurerm_network_security_group.sg.id}"
-  depends_on = [azurerm_network_security_group.sg, azurerm_virtual_network.vnet]
+  depends_on = [azurerm_network_security_group.sg, azurerm_virtual_network.vnet, azurerm_subnet.subnet]
 }
