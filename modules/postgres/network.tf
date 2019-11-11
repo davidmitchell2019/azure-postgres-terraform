@@ -17,7 +17,7 @@ resource "azurerm_postgresql_virtual_network_rule" "test" {
   server_name                          = "${var.postgres-server-name}"
   subnet_id                            = "${azurerm_subnet.subnet.id}"
   ignore_missing_vnet_service_endpoint = true
-  depends_on = [azurerm_virtual_network.vnet]
+  depends_on = [azurerm_postgresql_database.postgres-db, azurerm_virtual_network.vnet]
 }
 resource "azurerm_network_security_group" "sg" {
   name                = "nsg"
@@ -50,5 +50,5 @@ resource "azurerm_network_security_group" "sg" {
 resource "azurerm_subnet_network_security_group_association" "apply-sg-to-vnet" {
   subnet_id                 = "${azurerm_subnet.subnet.id}"
   network_security_group_id = "${azurerm_network_security_group.sg.id}"
-  depends_on = [azurerm_network_security_group.sg]
+  depends_on = [azurerm_network_security_group.sg, azurerm_virtual_network.vnet]
 }
