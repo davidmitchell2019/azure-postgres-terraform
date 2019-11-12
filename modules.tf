@@ -1,3 +1,4 @@
+#Call the module from the modules folder
 module "postgres" {
   source  = "./modules/postgres"
   database-login = "${var.database-login}"

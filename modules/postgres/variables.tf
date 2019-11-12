@@ -1,3 +1,4 @@
+#All variable descriptions can be found in the root modules variables file
 variable "database-login"{
   type  = "string"
 }

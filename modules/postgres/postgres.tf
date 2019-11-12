@@ -1,3 +1,4 @@
+#Create a Postgres server
 resource "azurerm_postgresql_server" "postgres-server" {
   name                         = "postgresql-database-deutsche-bank"
   resource_group_name          = "${var.resource_group_name}"
@@ -18,6 +19,7 @@ resource "azurerm_postgresql_server" "postgres-server" {
     geo_redundant_backup  = "${var.geo_redundent_enabled}"
   }
 }
+#Add a database to the server
 resource "azurerm_postgresql_database" "postgres-db" {
   name                = "mysqldatabase"
   resource_group_name = "${var.resource_group_name}"
@@ -25,6 +27,7 @@ resource "azurerm_postgresql_database" "postgres-db" {
   charset             = "UTF8"
   collation           = "English_United States.1252"
 }
+#Create a Postgres firewall rule, that allows the office IP to connect to the database
 resource "azurerm_postgresql_firewall_rule" "fw" {
   name                = "my-home"
   resource_group_name = "${var.resource_group_name}"

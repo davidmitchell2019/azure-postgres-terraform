@@ -1,6 +1,8 @@
+#Azure resource manager provider
 provider "azurerm" {
   version = "=1.36.0"
 }
+#Set the backend to be Azure storage using data as it allows me to pass variables into it
 terraform {
   backend "azurerm" {
     key                   = "terraform.tfstate"
