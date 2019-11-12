@@ -4,3 +4,4 @@
 *.inspeck.lock
 *.inspec.yml
 inspecazure/inspec.lock
+*.idea
